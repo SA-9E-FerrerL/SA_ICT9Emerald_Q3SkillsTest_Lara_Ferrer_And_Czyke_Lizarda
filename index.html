@@ -6,11 +6,6 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
-    <!-- 9E & 9R: Add your own JavaScript below before the closing </body> tag.
-         Use event handling and basic Math methods as discussed in class.
-         This will be part of your project. You may work with your partner. -->
-
     <nav class="navbar">
         <div class="logo">LOGO</div>
         <ul class="nav-links">
@@ -31,15 +26,30 @@
 
             <div class="left-panel">
                 <div class="profile-placeholder">
-                    Profile Image
+
+                <img src="pfp.png" 
+                style="width: 180px;
+                height: 180px;
+                border-radius: 50%;
+                object-fit: cover;"
+                id="pfp">
+
                 </div>
-                <input type="file">
-                <button class="upload-btn" onclick="">Upload Photo</button>
+                <input type="file" id="userfile">
                 <div style="text-align: center;"> 
+
                 <br>
                 <br>
-                <img src="sadjp.png" id="jp" style="width: 150px; border-radius: 20px; border-style: solid; border-color: black;">
-                <button onclick="document.getElementById('jp').src='happyjp.png'"> Click to make him happy!</button>
+
+                <img src="sadjp.png"
+                 id="jp"
+                 style="width: 150px;
+                 border-radius: 20px; 
+                 border-style: solid; 
+                 border-color: black;">
+
+                <button onclick="document.getElementById('jp').src='happyjp.png'">
+                 Click to make him happy!</button>
 
                 </div>
             </div>
@@ -84,7 +94,7 @@
                     </div>
                     <br>
 
-                    <button class="submit-btn" onclick="document.getElementById('jp').src='cutiejp2.png'">Create my account</button>
+                    <button class="submit-btn" id="button1">Create my account</button>
                 </form>
             </div>
 
@@ -94,47 +104,86 @@
     <br>
 
     <script>
-   document.getElementById("form").addEventListener("submit", function(event) {
-      event.preventDefault();
+    document.addEventListener('DOMContentLoaded', () => {
+    const userfile= document.getElementById('userfile');
+    const pfp = document.getElementById('pfp');
+
+    userfile.addEventListener('change', () => {
+     const newpfp = userfile.files[0];
+     if (!newpfp) return;
+     const url= URL.createObjectURL(newpfp);
+     pfp.src=url;
+    });
+
+     const form = document.getElementById('form');
+     const button1 = document.getElementById("button1");
+
+     let x=0;
+     let y=7;
+     button1.disabled=false;
       
+     form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    x=0;
+
       const FirstName = document.getElementById("FirstName").value;
          if (FirstName === "") {
             alert("You're missing your first name!");
-         }  
+            return;
+         }   
+         x++;
 
          const LastName = document.getElementById("LastName").value;
          if (LastName === "") {
             alert("You're missing your last name!");
+            return;
          } 
+         x++;
 
          const ContactNumber = document.getElementById("ContactNumber").value;
          if (ContactNumber === "") {
             alert("You're missing your contact number!");
+            return;
          } 
+         x++; 
 
          const Email = document.getElementById("Email").value;
          if (Email === "") {
             alert("You're missing your email!");
+            return;
          } 
+         x++;
 
          const User = document.getElementById("User").value;
          if (User === "") {
             alert("You're missing a username!");
+            return;
          } 
+         x++;
 
          const Pass = document.getElementById("Pass").value;
          if (Pass === "") {
             alert("You're missing a password!");
+            return;
          } 
-
+         x++;
        const age = Number(document.getElementById("age").value);
       if (age < 13) {
          alert("Oops! You need to be 13 years or older to make an account!");
+         return;
       }
 
       if (age>120) {
-            alert("Please enter a valid age.");    
-      }
+            alert("Please enter a valid age.");
+            return;
+         }
+         x++;
+        if (x===y) {
+            button1.disabled=false;}
+            
+            location.reload();
+       });
+
     });
 
     </script>
