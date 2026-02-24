@@ -35,6 +35,13 @@
                 </div>
                 <input type="file">
                 <button class="upload-btn" onclick="">Upload Photo</button>
+                <div style="text-align: center;"> 
+                <br>
+                <br>
+                <img src="sadjp.png" id="jp" style="width: 150px; border-radius: 20px; border-style: solid; border-color: black;">
+                <button onclick="document.getElementById('jp').src='happyjp.png'"> Click to make him happy!</button>
+
+                </div>
             </div>
 
             <div class="right-panel">
@@ -49,7 +56,7 @@
                     <input type="text" id="FirstName" name="FirstName">
 
                     <label>Last Name</label>
-                    <input type="text">
+                    <input type="text" id="LastName" name="LastName">
 
                     <div class="row">
                         <div>
@@ -58,18 +65,18 @@
                         </div>
                         <div>
                             <label>Contact Number</label>
-                            <input type="text">
+                            <input type="text" id="ContactNumber" name="ContactNumber">
                         </div>
                     </div>
 
                     <label>Email</label>
-                    <input type="email">
+                    <input type="email" id="Email" name="Email">
 
                     <label>Enter your username</label>
-                    <input type="text">
+                    <input type="text" id="User" name="User">
 
                     <label>Enter your password</label>
-                    <input type="password">
+                    <input type="password" id="Pass" name="Pass">
 
                     <div style="text-align:center" class="terms">
                         <input type="checkbox">
@@ -77,7 +84,7 @@
                     </div>
                     <br>
 
-                    <button class="submit-btn">Create my account</button>
+                    <button class="submit-btn" onclick="document.getElementById('jp').src='cutiejp2.png'">Create my account</button>
                 </form>
             </div>
 
@@ -95,12 +102,38 @@
             alert("You're missing your first name!");
          }  
 
-      const age = Number(document.getElementById("age").value);
+         const LastName = document.getElementById("LastName").value;
+         if (LastName === "") {
+            alert("You're missing your last name!");
+         } 
+
+         const ContactNumber = document.getElementById("ContactNumber").value;
+         if (ContactNumber === "") {
+            alert("You're missing your contact number!");
+         } 
+
+         const Email = document.getElementById("Email").value;
+         if (Email === "") {
+            alert("You're missing your email!");
+         } 
+
+         const User = document.getElementById("User").value;
+         if (User === "") {
+            alert("You're missing a username!");
+         } 
+
+         const Pass = document.getElementById("Pass").value;
+         if (Pass === "") {
+            alert("You're missing a password!");
+         } 
+
+       const age = Number(document.getElementById("age").value);
       if (age < 13) {
          alert("Oops! You need to be 13 years or older to make an account!");
       }
+
       if (age>120) {
-            alert("Please enter a valid age.");
+            alert("Please enter a valid age.");    
       }
     });
 
